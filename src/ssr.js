@@ -9,7 +9,7 @@
 import _Swiper from 'swiper/dist/js/swiper.js'
 import objectAssign from 'object-assign'
 
-const Swiper = window.Swiper || _Swiper
+const Swiper = typeof window !== 'undefined' && window.Swiper || _Swiper
 
 // as of swiper 4.0.7
 // http://idangero.us/swiper/api/#events
@@ -77,7 +77,7 @@ const swiperDirective = globalOptions => {
 
       // Emit event in Vue directive
       const eventEmit = (vnode, name, data) => {
-        const handlers = (vnode.data && vnode.data.on) || 
+        const handlers = (vnode.data && vnode.data.on) ||
                          (vnode.componentOptions && vnode.componentOptions.listeners)
         if (handlers && handlers[name]) handlers[name].fns(data)
       }
@@ -113,7 +113,9 @@ const swiperDirective = globalOptions => {
       const instanceName = getInstanceName(el, binding, vnode)
       const swiper = vnode.context[instanceName]
       if (swiper) {
-        swiper.destroy && swiper.destroy()
+        if (swiper.destroy && swiper.initialized === true) {
+          swiper.destroy();
+        }
         delete vnode.context[instanceName]
       }
     }

@@ -14,7 +14,7 @@
 <script>
   // require sources
   import _Swiper from 'swiper/dist/js/swiper.js'
-  const Swiper = window.Swiper || _Swiper
+  const Swiper = typeof window !== 'undefined' && window.Swiper || _Swiper
 
   // pollfill
   if (typeof Object.assign != 'function') {
@@ -84,6 +84,11 @@
         type: Object,
         required: false,
         default: () => ({})
+      },
+      cleanStylesOnDestroy: {
+        type: Boolean,
+        required: false,
+        default: true
       }
     },
     data() {
@@ -122,7 +127,7 @@
     beforeDestroy() {
       this.$nextTick(function() {
         if (this.swiper) {
-          this.swiper.destroy && this.swiper.destroy()
+          this.swiper.destroy && this.swiper.destroy(true, this.cleanStylesOnDestroy)
           delete this.swiper
         }
       })
@@ -145,9 +150,11 @@
       bindEvents() {
         const vm = this
         DEFAULT_EVENTS.forEach(eventName => {
-          this.swiper.on(eventName, function() {
-            vm.$emit(eventName, ...arguments)
-            vm.$emit(eventName.replace(/([A-Z])/g, '-$1').toLowerCase(), ...arguments)
+          this.swiper.on(eventName, (...args) => {
+            vm.$emit(eventName, ...args)
+            if (eventName.toLowerCase() !== eventName) {
+              vm.$emit(eventName.replace(/([A-Z])/g, '-$1').toLowerCase(), ...args)
+            }
           })
         })
       }
