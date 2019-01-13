@@ -14,8 +14,10 @@
 
 #### NPM
 
+Add to Package.json
+
 ``` bash
-npm install vue-awesome-swiper --save
+"vue-awesome-swiper": "https://github.com/juandl/vue-awesome-swiper"
 ```
 
 ### Mount
