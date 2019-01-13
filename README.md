@@ -1,24 +1,3 @@
-# Vue-Awesome-Swiper
-[Swiper4](http://www.swiper.com.cn) component for Vue, support pc and mobile, SPA and SSR.
-
-If you need to roll back to Swiper3, use version [v2.6.7](https://github.com/surmon-china/vue-awesome-swiper/tree/v2.6.7).
-
-基于 [Swiper4](http://www.swiper.com.cn)、适用于 Vue 的轮播组件，支持服务端渲染和单页应用。
-
-如果需要回退到 Swiper3，请使用 [v2.6.7](https://github.com/surmon-china/vue-awesome-swiper/tree/v2.6.7) 版本。
-
-
-# Example
-
-[Demo Page](https://surmon-china.github.io/vue-awesome-swiper)
-
-[CDN Example](https://jsfiddle.net/bL983fjt/)
-
-[mobile fullpage example code](https://github.com/surmon-china/vue-awesome-swiper/blob/master/examples/44-mobile-fullpage-example.vue)
-
-[nuxt.js/ssr example code](https://github.com/surmon-china/vue-awesome-swiper/blob/master/examples/nuxt-ssr-example)
-
-
 # Install
 
 #### CDN
