@@ -84,11 +84,6 @@
         type: Object,
         required: false,
         default: () => ({})
-      },
-      cleanStylesOnDestroy: {
-        type: Boolean,
-        required: false,
-        default: true
       }
     },
     data() {
@@ -124,14 +119,14 @@
     updated() {
       this.update()
     },
-    beforeDestroy() {
-      this.$nextTick(function() {
-        if (this.swiper) {
-          this.swiper.destroy && this.swiper.destroy(true, this.cleanStylesOnDestroy)
-          delete this.swiper
-        }
-      })
-    },
+    // beforeDestroy() {
+    //   this.$nextTick(function() {
+    //     if (this.swiper) {
+    //       this.swiper.destroy && this.swiper.destroy()
+    //       delete this.swiper
+    //     }
+    //   })
+    // },
     methods: {
       update() {
         if (this.swiper) {
