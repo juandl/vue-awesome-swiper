@@ -119,14 +119,14 @@
     updated() {
       this.update()
     },
-    // beforeDestroy() {
-    //   this.$nextTick(function() {
-    //     if (this.swiper) {
-    //       this.swiper.destroy && this.swiper.destroy()
-    //       delete this.swiper
-    //     }
-    //   })
-    // },
+    beforeDestroy() {
+      this.$nextTick(function() {
+        if (this.swiper) {
+          this.swiper.destroy && this.swiper.destroy()
+          delete this.swiper
+        }
+      })
+    },
     methods: {
       update() {
         if (this.swiper) {
